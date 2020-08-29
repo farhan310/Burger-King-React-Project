@@ -8,9 +8,10 @@ const App = () => {
   const [siteSettings, setSiteSettings] = React.useState({
     bagIcon: { asset: { url: '' } },
     logo: { asset: { url: '' } },
-    menuHero: '',
+    menuHeroText: '',
   });
   const [categories, setCategories] = React.useState([]);
+  const [products, setProducts] = React.useState([]);
 
   const fetchSanityData = async () => {
     const response = await fetch(sanityUrl, {
@@ -22,7 +23,8 @@ const App = () => {
       body: JSON.stringify({ query: sanityQuery }),
     });
     const { data } = await response.json();
-    setSiteSettings(data.allOverallSiteSettings[0]);
+    console.log(data)
+    setSiteSettings(data.allSiteSettings[0]);
     setCategories(data.allCategory);
   };
 

@@ -1,14 +1,18 @@
 import React from 'react';
-import { sanitize } from '../utils';
 
-const Main = ({ siteSettings, categories }) => {
-  return(
+const Main = ({ siteSettings, categories }) => (
+  <div>
+    <div id="menu-hero-text">{siteSettings.menuHeroText}</div>
     <main>
-      <section id="categories"> 
-      {categories.map((category) => {
-        return(
-          <button key={category._id} data-trackingid={category.name} className="category" data-category={category.name}>
-            <img 
+      <section id="categories">
+        {categories.map(category => (
+          <button
+            key={category._id}
+            data-trackingid={category.name}
+            className="category"
+            data-category={category.name}
+          >
+            <img
               src={category.primaryImage.asset.url}
               alt={category.name}
               data-primaryimage={category.primaryImage.asset.url}
@@ -16,8 +20,7 @@ const Main = ({ siteSettings, categories }) => {
             />
             <h2>{category.name}</h2>
           </button>
-        );
-      })}
+        ))}
       </section>
 
       <button type="button" id="back-to-main-menu">
@@ -25,10 +28,8 @@ const Main = ({ siteSettings, categories }) => {
       </button>
 
       <section id="products"></section>
-
-      <script src="App.js"></script>
     </main>
-  ),
-};
+</div>
+);
 
 export default Main;
